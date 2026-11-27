@@ -9,7 +9,7 @@ The plugins are thin: manifests, a usage skill and icons. They contain no CCXT c
 
 Setup for every assistant: [docs.ccxt.com/docs/mcp](https://docs.ccxt.com/docs/mcp).
 
-The source of truth is the [ccxt/ccxt](https://github.com/ccxt/ccxt) repository (`mcp/hosted/plugin`, `mcp/plugin`, `.claude/skills/ccxt-mcp`). Report problems at [ccxt/ccxt issues](https://github.com/ccxt/ccxt/issues).
+The source of truth is the [ccxt/ccxt](https://github.com/ccxt/ccxt) repository (`mcp/hosted/plugin`, `mcp/plugin`, `.claude/skills/ccxt-mcp`); this repository holds published copies. Report problems at [ccxt/ccxt issues](https://github.com/ccxt/ccxt/issues).
 
 ## Claude
 
@@ -20,6 +20,16 @@ The source of truth is the [ccxt/ccxt](https://github.com/ccxt/ccxt) repository 
 | Team and Enterprise | an Owner adds the marketplace under **Organization settings > Plugins & skills > Add > Sync from GitHub** |
 
 Files: [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) and [`claude/`](claude/).
+
+## ChatGPT and Codex
+
+| Where | How |
+|---|---|
+| ChatGPT desktop app, Codex CLI and IDE extension | `codex plugin marketplace add ccxt/ccxt-plugins`, then `codex plugin add ccxt@ccxt`; restart the ChatGPT desktop app |
+| ChatGPT workspaces | an admin imports `https://github.com/ccxt/ccxt-plugins` under **Admin > Plugins > Add > Import marketplace** |
+| ChatGPT web and mobile | add `https://docs.ccxt.com/mcp` as a custom MCP server ([steps](https://docs.ccxt.com/docs/mcp#chatgpt-web)) |
+
+Files: [`.agents/plugins/marketplace.json`](.agents/plugins/marketplace.json) and [`chatgpt/`](chatgpt/).
 
 ## License
 
