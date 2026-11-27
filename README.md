@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  Ask your assistant for prices, order books and charts from major crypto exchanges, and get them back as live, interactive views in the chat.<br>
+  Ask your assistant for prices, order books and charts from major crypto exchanges, and get them back as interactive views in the chat.<br>
   No install, no sign-in and no API keys: it connects to the hosted CCXT server at <code>https://docs.ccxt.com/mcp</code>.
 </p>
 
@@ -76,7 +76,7 @@ codex plugin add ccxt@ccxt
 >
 > *Write a Python script that saves hourly BTC/USDT candles to CSV.*
 
-The chart, order book and price board open as interactive views in Claude and ChatGPT, and keep updating while they're on screen. Other hosts get the same data as text.
+The chart, order book and price board open as interactive views in Claude and ChatGPT, and refresh themselves while they're on screen. Other hosts get the same data as text.
 
 ## Trade from your assistant
 
