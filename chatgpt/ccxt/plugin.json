@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ccxt",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Public crypto market data from major exchanges through the hosted CCXT MCP server: prices, order books, candles, recent trades and market search, with interactive charts. Plus skills for writing code with the CCXT library in TypeScript, Python, PHP, C#, Go, Java, Rust and the CLI. The server is read-only and needs no API keys.",
   "author": {
     "name": "CCXT",
