@@ -1,6 +1,6 @@
 # CCXT — hosted market-data plugin
 
-This plugin connects your assistant to the **hosted CCXT MCP server** at `https://docs.ccxt.com/mcp` and adds a skill that teaches the assistant how to use it. Nothing runs on your computer, and no exchange account or API key is needed.
+This plugin connects your assistant to the **hosted CCXT MCP server** at `https://docs.ccxt.com/mcp` and adds a skill that teaches the assistant how to use it, plus skills for writing code with the CCXT library. Nothing runs on your computer, and no exchange account or API key is needed.
 
 Ask for prices, order books, OHLCV candles, recent trades and market listings on a curated set of major cryptocurrency exchanges. In hosts that render [MCP Apps](https://modelcontextprotocol.io/docs/extensions/apps), the assistant can also show an interactive candlestick chart, an order-book depth view or a price board in the chat.
 
@@ -32,6 +32,7 @@ Every tool here is read-only, but Claude decides when to ask, from your settings
 | `.claude-plugin/plugin.json` | the plugin manifest |
 | `.mcp.json` | the hosted server (`"type": "http"`, `https://docs.ccxt.com/mcp`) |
 | `skills/ccxt/SKILL.md` | how the assistant uses the tools |
+| `skills/ccxt-<language>/SKILL.md` | how to write code with the CCXT library: `ccxt-typescript`, `ccxt-python`, `ccxt-php`, `ccxt-csharp`, `ccxt-go`, `ccxt-java`, `ccxt-rust`, `ccxt-cli` |
 | `assets/` | icon and logo for directory listings |
 
 The source is [`mcp/hosted/plugin`](https://github.com/ccxt/ccxt/tree/master/mcp/hosted/plugin) in ccxt/ccxt, where CI checks the manifests.

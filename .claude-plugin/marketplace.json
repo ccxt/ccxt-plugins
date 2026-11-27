@@ -11,8 +11,7 @@
       "name": "ccxt",
       "source": "./claude/ccxt",
       "displayName": "CCXT",
-      "description": "The hosted CCXT MCP server (https://docs.ccxt.com/mcp) plus a usage skill — read-only public market data and interactive charts from major crypto exchanges. No install, no API keys.",
-      "version": "0.1.0",
+      "description": "The hosted CCXT MCP server (https://docs.ccxt.com/mcp) with its usage skill, plus skills for writing code with the CCXT library in every language it supports. Read-only public market data and interactive charts; no API keys.",
       "author": {
         "name": "CCXT",
         "url": "https://ccxt.com"
@@ -40,7 +39,6 @@
       "source": "./claude/ccxt-local",
       "displayName": "CCXT Local",
       "description": "The CCXT MCP server running on your computer (npx -y ccxt-mcp), plus its usage skill: market data, balances and opt-in trading across 100+ crypto exchanges and prediction markets, with keys kept local.",
-      "version": "0.1.0",
       "author": {
         "name": "CCXT",
         "url": "https://ccxt.com"

@@ -1,0 +1,68 @@
+name: Sync skills from ccxt/ccxt
+
+# ccxt/ccxt is the source of truth for the skills these plugins ship. This copies them from its
+# master branch (scripts/sync-from-ccxt.sh) and commits any change to main, so the plugins
+# follow ccxt without anyone copying files. ccxt/ccxt is public: no token is needed to read it.
+#
+# Updates reaching users: Claude Code treats a plugin as updated only when its "version"
+# changes (a pinned version keeps users on the cached copy whatever is pushed), so every plugin
+# whose files the sync changed gets its patch version raised. ChatGPT and Codex get the same.
+# Change a manifest by hand here? Raise its version too.
+
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+  # lets ccxt/ccxt trigger a sync right after a merge, once it has a token for this repository
+  repository_dispatch:
+    types: [ ccxt-updated ]
+
+concurrency:
+  group: sync-from-ccxt
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check out the skills from ccxt/ccxt master
+        uses: actions/checkout@v6
+        with:
+          repository: ccxt/ccxt
+          ref: master
+          path: _ccxt
+          fetch-depth: 1
+          sparse-checkout: |
+            .claude/skills
+            mcp/hosted/plugin/skills
+
+      - name: Copy the skills
+        run: scripts/sync-from-ccxt.sh _ccxt
+
+      - name: Raise the patch version of each plugin that changed
+        run: |
+          for dir in claude/ccxt claude/ccxt-local chatgpt/ccxt; do
+            [ -z "$(git status --porcelain -- "$dir")" ] && continue
+            manifest="$dir/.claude-plugin/plugin.json"
+            [ -f "$manifest" ] || manifest="$dir/plugin.json"
+            python3 scripts/bump-version.py "$manifest"
+          done
+
+      - name: Commit and push
+        run: |
+          rm -rf _ccxt
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "skills already in sync"
+            exit 0
+          fi
+          src=$(git ls-remote https://github.com/ccxt/ccxt.git refs/heads/master | cut -c1-11)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Sync skills from ccxt/ccxt@${src}"
+          git push origin HEAD:main
