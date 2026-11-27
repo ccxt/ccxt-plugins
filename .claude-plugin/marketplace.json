@@ -5,7 +5,7 @@
     "name": "CCXT",
     "url": "https://ccxt.com"
   },
-  "description": "Official CCXT plugins for Claude: the hosted public market-data server (ccxt) and the local CCXT MCP server (ccxt-mcp), each bundled with its usage skill.",
+  "description": "Official CCXT plugins for Claude: ccxt connects to the hosted public market-data server, ccxt-local runs the CCXT MCP server on your computer for accounts and opt-in trading. Each bundles its usage skill.",
   "plugins": [
     {
       "name": "ccxt",
@@ -36,10 +36,10 @@
       ]
     },
     {
-      "name": "ccxt-mcp",
-      "source": "./claude/ccxt-mcp",
-      "displayName": "CCXT MCP Server",
-      "description": "The official CCXT MCP server plus the ccxt-mcp usage skill — market data, balances and opt-in trading across 100+ crypto exchanges and prediction markets, with keys kept local.",
+      "name": "ccxt-local",
+      "source": "./claude/ccxt-local",
+      "displayName": "CCXT Local",
+      "description": "The CCXT MCP server running on your computer (npx -y ccxt-mcp), plus its usage skill: market data, balances and opt-in trading across 100+ crypto exchanges and prediction markets, with keys kept local.",
       "version": "0.1.0",
       "author": {
         "name": "CCXT",

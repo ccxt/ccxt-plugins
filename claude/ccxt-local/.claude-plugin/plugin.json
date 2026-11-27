@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
-  "name": "ccxt-mcp",
-  "displayName": "CCXT MCP Server",
+  "name": "ccxt-local",
+  "displayName": "CCXT Local",
   "version": "0.1.0",
-  "description": "The official CCXT MCP server plus the ccxt-mcp usage skill: connect Claude Code to 100+ crypto exchanges and prediction markets for market data, balances and opt-in trading, with API keys kept local.",
+  "description": "The local CCXT MCP server (npx -y ccxt-mcp) plus its usage skill: runs on your computer and connects Claude to 100+ crypto exchanges and prediction markets for market data, balances and opt-in trading, with API keys kept on your machine.",
   "author": {
     "name": "CCXT",
     "url": "https://ccxt.com"
