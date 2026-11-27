@@ -6,23 +6,25 @@
 </p>
 
 <p align="center">
-  Ask your assistant for prices, order books and charts from major crypto exchanges, and get them back as interactive views in the chat.<br>
+  Ask your assistant for prices, order books and charts from major crypto exchanges, and get them back as live, interactive views in the chat.<br>
   No install, no sign-in and no API keys: it connects to the hosted CCXT server at <code>https://docs.ccxt.com/mcp</code>.
 </p>
 
 <p align="center">
   <a href="https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=CCXT&connectorUrl=https%3A%2F%2Fdocs.ccxt.com%2Fmcp"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-claude-dark.svg"><img alt="Add to Claude" src=".github/assets/btn-claude-light.svg" height="48"></picture></a>
-  <a href="https://docs.ccxt.com/docs/mcp#chatgpt-web"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-chatgpt-dark.svg"><img alt="Add to ChatGPT" src=".github/assets/btn-chatgpt-light.svg" height="48"></picture></a>
+  <a href="https://chatgpt.com/plugins"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-chatgpt-dark.svg"><img alt="Add to ChatGPT" src=".github/assets/btn-chatgpt-light.svg" height="48"></picture></a>
   <a href="https://cursor.com/install-mcp?name=CCXT&config=eyJ1cmwiOiJodHRwczovL2RvY3MuY2N4dC5jb20vbWNwIn0%3D"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-cursor-dark.svg"><img alt="Add to Cursor" src=".github/assets/btn-cursor-light.svg" height="48"></picture></a>
   <a href="https://vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%257B%2522name%2522%253A%2522CCXT%2522%252C%2522type%2522%253A%2522http%2522%252C%2522url%2522%253A%2522https%253A%252F%252Fdocs.ccxt.com%252Fmcp%2522%257D"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-vscode-dark.svg"><img alt="Add to VS Code" src=".github/assets/btn-vscode-light.svg" height="48"></picture></a>
 </p>
+
+<p align="center"><sub><b>ChatGPT:</b> the button opens Plugins. Select <b>+</b> › <b>Add custom MCP server</b>, paste <code>https://docs.ccxt.com/mcp</code> and choose <b>No authentication</b>.</sub></p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/demo-dark.gif">
     <img alt="The CCXT views in a chat: a BTC/USDT candlestick chart, an order book with depth chart, and a price board, filled with real data from the hosted server" src=".github/assets/demo-light.gif" width="720">
   </picture>
-  <br><sub>Real data from <code>docs.ccxt.com/mcp</code>, recorded in the views the plugin ships.</sub>
+  <br><sub>Real, live data from <code>docs.ccxt.com/mcp</code>, recorded in the views the plugin ships.</sub>
 </p>
 
 ## Install
@@ -76,7 +78,7 @@ codex plugin add ccxt@ccxt
 >
 > *Write a Python script that saves hourly BTC/USDT candles to CSV.*
 
-The chart, order book and price board open as interactive views in Claude and ChatGPT, and refresh themselves while they're on screen. Other hosts get the same data as text.
+The chart, order book and price board open as interactive views in Claude and ChatGPT, and update live while they're on screen. Other hosts get the same data as text.
 
 ## Trade from your assistant
 

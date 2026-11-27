@@ -10,5 +10,5 @@
     <rect x="30" y="70" width="10" height="10"/><path d="M50 50h30v10H70v20h-10V60H50z"/>
   </g></g>
 <text x="48" y="23" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#ffffff">Add to ChatGPT</text>
-<text x="48" y="38" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#ffffff" fill-opacity="0.65">web · mobile</text>
+<text x="48" y="38" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#ffffff" fill-opacity="0.65">opens Plugins</text>
 </svg>
