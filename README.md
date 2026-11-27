@@ -7,24 +7,24 @@
 
 <p align="center">
   Ask your assistant for prices, order books and charts from major crypto exchanges, and get them back as live, interactive views in the chat.<br>
-  No install, no sign-in and no API keys: it connects to the hosted CCXT server at <code>https://docs.ccxt.com/mcp</code>.
+  No install, no sign-in and no API keys: it connects to the hosted CCXT server at <code>https://mcp.ccxt.com/mcp</code>.
 </p>
 
 <p align="center">
-  <a href="https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=CCXT&connectorUrl=https%3A%2F%2Fdocs.ccxt.com%2Fmcp"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-claude-dark.svg"><img alt="Add to Claude" src=".github/assets/btn-claude-light.svg" height="48"></picture></a>
+  <a href="https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=CCXT&connectorUrl=https%3A%2F%2Fmcp.ccxt.com%2Fmcp"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-claude-dark.svg"><img alt="Add to Claude" src=".github/assets/btn-claude-light.svg" height="48"></picture></a>
   <a href="https://chatgpt.com/plugins"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-chatgpt-dark.svg"><img alt="Add to ChatGPT" src=".github/assets/btn-chatgpt-light.svg" height="48"></picture></a>
-  <a href="https://cursor.com/install-mcp?name=CCXT&config=eyJ1cmwiOiJodHRwczovL2RvY3MuY2N4dC5jb20vbWNwIn0%3D"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-cursor-dark.svg"><img alt="Add to Cursor" src=".github/assets/btn-cursor-light.svg" height="48"></picture></a>
-  <a href="https://vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%257B%2522name%2522%253A%2522CCXT%2522%252C%2522type%2522%253A%2522http%2522%252C%2522url%2522%253A%2522https%253A%252F%252Fdocs.ccxt.com%252Fmcp%2522%257D"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-vscode-dark.svg"><img alt="Add to VS Code" src=".github/assets/btn-vscode-light.svg" height="48"></picture></a>
+  <a href="https://cursor.com/install-mcp?name=CCXT&config=eyJ1cmwiOiJodHRwczovL21jcC5jY3h0LmNvbS9tY3AifQ%3D%3D"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-cursor-dark.svg"><img alt="Add to Cursor" src=".github/assets/btn-cursor-light.svg" height="48"></picture></a>
+  <a href="https://vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%257B%2522name%2522%253A%2522CCXT%2522%252C%2522type%2522%253A%2522http%2522%252C%2522url%2522%253A%2522https%253A%252F%252Fmcp.ccxt.com%252Fmcp%2522%257D"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/btn-vscode-dark.svg"><img alt="Add to VS Code" src=".github/assets/btn-vscode-light.svg" height="48"></picture></a>
 </p>
 
-<p align="center"><sub><b>ChatGPT:</b> the button opens Plugins. Select <b>+</b> › <b>Add custom MCP server</b>, paste <code>https://docs.ccxt.com/mcp</code> and choose <b>No authentication</b>.</sub></p>
+<p align="center"><sub><b>ChatGPT:</b> the button opens Plugins. Select <b>+</b> › <b>Add custom MCP server</b>, paste <code>https://mcp.ccxt.com/mcp</code> and choose <b>No authentication</b>.</sub></p>
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/demo-dark.gif">
     <img alt="The CCXT views in a chat: a BTC/USDT candlestick chart, an order book with depth chart, and a price board, filled with real data from the hosted server" src=".github/assets/demo-light.gif" width="720">
   </picture>
-  <br><sub>Real, live data from <code>docs.ccxt.com/mcp</code>, recorded in the views the plugin ships.</sub>
+  <br><sub>Real, live data from <code>mcp.ccxt.com/mcp</code>, recorded in the views the plugin ships.</sub>
 </p>
 
 ## Install
@@ -44,23 +44,23 @@ codex plugin add ccxt@ccxt
 
 **Claude web and desktop**: the **Add to Claude** button above adds the server as a connector, on every plan. On a paid plan you can install the plugin instead, which also brings the skills: **Customize > Plugins > Add > Add marketplace**, enter `ccxt/ccxt-plugins`, add **CCXT**, then connect it on the plugin's **Connectors** tab.
 
-**ChatGPT web and mobile**: open [Plugins](https://chatgpt.com/plugins), select **+** then **Add custom MCP server**, paste `https://docs.ccxt.com/mcp` and choose **No authentication** ([step by step](https://docs.ccxt.com/docs/mcp#chatgpt-web)).
+**ChatGPT web and mobile**: open [Plugins](https://chatgpt.com/plugins), select **+** then **Add custom MCP server**, paste `https://mcp.ccxt.com/mcp` and choose **No authentication** ([step by step](https://docs.ccxt.com/docs/mcp#chatgpt-web)).
 
-**Anything else**: any MCP host that can add a remote server works. Use `https://docs.ccxt.com/mcp`, over Streamable HTTP, with no auth.
+**Anything else**: any MCP host that can add a remote server works. Use `https://mcp.ccxt.com/mcp`, over Streamable HTTP, with no auth.
 
 <details>
 <summary><b>Other ways and older versions</b></summary>
 
 - **Claude Code older than 2.1.292** has no `--marketplace`. Run `claude plugin marketplace add ccxt/ccxt-plugins`, then `claude plugin install ccxt@ccxt`. Inside a session: `/plugin marketplace add ccxt/ccxt-plugins`, then `/plugin install ccxt@ccxt`.
-- **Server only, without the skills:** `claude mcp add --transport http ccxt https://docs.ccxt.com/mcp`, or in `~/.codex/config.toml`:
+- **Server only, without the skills:** `claude mcp add --transport http ccxt https://mcp.ccxt.com/mcp`, or in `~/.codex/config.toml`:
 
   ```toml
   [mcp_servers.ccxt]
-  url = "https://docs.ccxt.com/mcp"
+  url = "https://mcp.ccxt.com/mcp"
   ```
 
-- **Gemini CLI:** `gemini mcp add --transport http ccxt https://docs.ccxt.com/mcp`
-- **Cursor or VS Code by hand:** `{ "mcpServers": { "ccxt": { "url": "https://docs.ccxt.com/mcp" } } }` in `~/.cursor/mcp.json`, or `{ "servers": { "ccxt": { "type": "http", "url": "https://docs.ccxt.com/mcp" } } }` in `.vscode/mcp.json`.
+- **Gemini CLI:** `gemini mcp add --transport http ccxt https://mcp.ccxt.com/mcp`
+- **Cursor or VS Code by hand:** `{ "mcpServers": { "ccxt": { "url": "https://mcp.ccxt.com/mcp" } } }` in `~/.cursor/mcp.json`, or `{ "servers": { "ccxt": { "type": "http", "url": "https://mcp.ccxt.com/mcp" } } }` in `.vscode/mcp.json`.
 - **Teams:** on Claude Team and Enterprise, an Owner adds the marketplace for everyone under **Organization settings > Plugins & skills > Add > Sync from GitHub**. On a ChatGPT workspace, an admin imports `https://github.com/ccxt/ccxt-plugins` under **Admin > Plugins > Add > Import marketplace**.
 - **Stop the approval prompts:** every tool on the hosted server is read-only. In Claude, open **Customize > Connectors > CCXT** and set **Tool permissions** to **Always allow**. In Claude Code, add `"mcp__plugin_ccxt_ccxt__*"` to `permissions.allow`.
 

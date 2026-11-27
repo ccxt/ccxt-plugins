@@ -1,6 +1,6 @@
 # CCXT — hosted market-data plugin for ChatGPT and Codex
 
-This plugin connects ChatGPT or Codex to the **hosted CCXT MCP server** at `https://docs.ccxt.com/mcp` and adds a skill that teaches the assistant how to use it, plus skills for writing code with the CCXT library. Nothing runs on your computer, and no exchange account or API key is needed.
+This plugin connects ChatGPT or Codex to the **hosted CCXT MCP server** at `https://mcp.ccxt.com/mcp` and adds a skill that teaches the assistant how to use it, plus skills for writing code with the CCXT library. Nothing runs on your computer, and no exchange account or API key is needed.
 
 Ask for prices, order books, OHLCV candles, recent trades and market listings on a curated set of major cryptocurrency exchanges. ChatGPT can also show an interactive candlestick chart, an order-book depth view or a price board in the chat.
 
@@ -13,7 +13,7 @@ Install: see [../README.md](../README.md).
 | File | Purpose |
 |---|---|
 | `plugin.json` | the plugin manifest (Agent Plugins format) with the OpenAI listing, review test cases and icons under `extensions["com.openai"]` |
-| `mcp.json` | the hosted server (`"type": "streamable-http"`, `https://docs.ccxt.com/mcp`) |
+| `mcp.json` | the hosted server (`"type": "streamable-http"`, `https://mcp.ccxt.com/mcp`) |
 | `skills/ccxt/SKILL.md` | how the assistant uses the tools |
 | `skills/ccxt-<language>/SKILL.md` | how to write code with the CCXT library: `ccxt-typescript`, `ccxt-python`, `ccxt-php`, `ccxt-csharp`, `ccxt-go`, `ccxt-java`, `ccxt-rust`, `ccxt-cli` |
 | `assets/` | logo and composer icons |
