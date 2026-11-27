@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "ccxt",
+  "owner": {
+    "name": "CCXT",
+    "url": "https://ccxt.com"
+  },
+  "description": "Official CCXT plugins for Claude: ccxt connects to the hosted public market-data server, ccxt-local runs the CCXT MCP server on your computer for accounts and opt-in trading. Each bundles its usage skill.",
+  "plugins": [
+    {
+      "name": "ccxt",
+      "source": "./claude/ccxt",
+      "displayName": "CCXT",
+      "description": "The hosted CCXT MCP server (https://docs.ccxt.com/mcp) plus a usage skill — read-only public market data and interactive charts from major crypto exchanges. No install, no API keys.",
+      "version": "0.1.0",
+      "author": {
+        "name": "CCXT",
+        "url": "https://ccxt.com"
+      },
+      "homepage": "https://docs.ccxt.com/docs/mcp",
+      "repository": "https://github.com/ccxt/ccxt",
+      "license": "MIT",
+      "category": "finance",
+      "keywords": [
+        "ccxt",
+        "crypto",
+        "cryptocurrency",
+        "exchange",
+        "market-data"
+      ],
+      "tags": [
+        "crypto",
+        "finance",
+        "market-data",
+        "remote"
+      ]
+    },
+    {
+      "name": "ccxt-local",
+      "source": "./claude/ccxt-local",
+      "displayName": "CCXT Local",
+      "description": "The CCXT MCP server running on your computer (npx -y ccxt-mcp), plus its usage skill: market data, balances and opt-in trading across 100+ crypto exchanges and prediction markets, with keys kept local.",
+      "version": "0.1.0",
+      "author": {
+        "name": "CCXT",
+        "url": "https://ccxt.com"
+      },
+      "homepage": "https://ccxt.com",
+      "repository": "https://github.com/ccxt/ccxt",
+      "license": "MIT",
+      "keywords": [
+        "ccxt",
+        "crypto",
+        "cryptocurrency",
+        "exchange",
+        "trading",
+        "mcp"
+      ],
+      "tags": [
+        "trading",
+        "crypto",
+        "finance",
+        "rest",
+        "websocket"
+      ]
+    }
+  ]
+}
