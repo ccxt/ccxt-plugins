@@ -35,7 +35,7 @@ Every tool here is read-only, but Claude decides when to ask, from your settings
 | `skills/ccxt-<language>/SKILL.md` | how to write code with the CCXT library: `ccxt-typescript`, `ccxt-python`, `ccxt-php`, `ccxt-csharp`, `ccxt-go`, `ccxt-java`, `ccxt-rust`, `ccxt-cli` |
 | `assets/` | icon and logo for directory listings |
 
-The source is [`mcp/hosted/plugin`](https://github.com/ccxt/ccxt/tree/master/mcp/hosted/plugin) in ccxt/ccxt, where CI checks the manifests.
+The skills are copied from ccxt/ccxt by the sync (see the [top-level README](../../README.md#keeping-in-sync-with-ccxtccxt)); edit them there. This folder's manifest and README are maintained here; they started from [`mcp/hosted/plugin`](https://github.com/ccxt/ccxt/tree/master/mcp/hosted/plugin) in ccxt/ccxt, which is not copied over.
 
 ## Privacy
 

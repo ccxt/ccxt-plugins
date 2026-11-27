@@ -7,7 +7,10 @@ name: Sync skills from ccxt/ccxt
 # Updates reaching users: Claude Code treats a plugin as updated only when its "version"
 # changes (a pinned version keeps users on the cached copy whatever is pushed), so every plugin
 # whose files the sync changed gets its patch version raised. ChatGPT and Codex get the same.
-# Change a manifest by hand here? Raise its version too.
+# A change made here by hand must raise the version too: check-versions.yml enforces it on PRs.
+#
+# GitHub turns off scheduled workflows in a public repository after 60 days without activity;
+# re-enable it from the Actions tab if that happens (a run by hand works any time).
 
 on:
   schedule:
@@ -26,9 +29,14 @@ permissions:
 
 jobs:
   sync:
+    # only ever from main: a run started by hand on another branch would push that branch to main
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Check out the skills from ccxt/ccxt master
         uses: actions/checkout@v6
@@ -37,32 +45,40 @@ jobs:
           ref: master
           path: _ccxt
           fetch-depth: 1
+          persist-credentials: false
           sparse-checkout: |
             .claude/skills
-            mcp/hosted/plugin/skills
+            .agents/skills
+            mcp/hosted/plugin
 
-      - name: Copy the skills
-        run: scripts/sync-from-ccxt.sh _ccxt
-
-      - name: Raise the patch version of each plugin that changed
+      # Copy, raise the version of each plugin that changed, commit, push. If main moved while
+      # this ran (someone pushed), start again from the new main rather than merging: the
+      # versions must be raised from what is on main now, or two changes could share a version.
+      - name: Sync, bump, commit and push
         run: |
-          for dir in claude/ccxt claude/ccxt-local chatgpt/ccxt; do
-            [ -z "$(git status --porcelain -- "$dir")" ] && continue
-            manifest="$dir/.claude-plugin/plugin.json"
-            [ -f "$manifest" ] || manifest="$dir/plugin.json"
-            python3 scripts/bump-version.py "$manifest"
-          done
-
-      - name: Commit and push
-        run: |
-          rm -rf _ccxt
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "skills already in sync"
-            exit 0
-          fi
-          src=$(git ls-remote https://github.com/ccxt/ccxt.git refs/heads/master | cut -c1-11)
+          src=$(git -C _ccxt rev-parse --short=11 HEAD)
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Sync skills from ccxt/ccxt@${src}"
-          git push origin HEAD:main
+          for attempt in 1 2 3; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            scripts/sync-from-ccxt.sh _ccxt
+            if [ -z "$(git status --porcelain -- claude chatgpt)" ]; then
+              echo "skills already in sync with ccxt/ccxt@${src}"
+              exit 0
+            fi
+            for dir in claude/ccxt claude/ccxt-local chatgpt/ccxt; do
+              [ -z "$(git status --porcelain -- "$dir")" ] && continue
+              manifest="$dir/.claude-plugin/plugin.json"
+              [ -f "$manifest" ] || manifest="$dir/plugin.json"
+              python3 scripts/bump-version.py "$manifest"
+            done
+            git add -A -- claude chatgpt
+            git commit -q -m "Sync skills from ccxt/ccxt@${src}"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "main moved during the sync (attempt ${attempt}); starting again from the new main"
+          done
+          echo "::error::could not push after 3 attempts"
+          exit 1
