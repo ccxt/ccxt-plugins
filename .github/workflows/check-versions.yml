@@ -1,0 +1,44 @@
+name: Check plugins
+
+# Claude Code only updates an installed plugin when its "version" changes, so a PR that changes
+# anything a plugin ships must raise that plugin's version above main's; otherwise users keep
+# the old copy. Also validates the manifests. The sync from ccxt/ccxt raises versions itself.
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Each changed plugin raises its version
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: python3 scripts/check-versions.py "$BASE"
+
+      - name: Validate the Claude plugins and marketplace
+        run: |
+          npm install -g --no-audit --no-fund @anthropic-ai/claude-code >/dev/null
+          for dir in . claude/ccxt claude/ccxt-local; do
+            claude plugin validate --strict "$dir"
+          done
+
+      - name: Validate the OpenAI plugin against its schema
+        run: |
+          pip install --quiet jsonschema
+          python3 - <<'PY'
+          import json, urllib.request, jsonschema
+          schema = json.load(urllib.request.urlopen('https://agent-plugins.org/schemas/1.0.0/plugin.schema.json'))
+          jsonschema.validate(json.load(open('chatgpt/ccxt/plugin.json')), schema)
+          print('chatgpt/ccxt/plugin.json is valid')
+          PY

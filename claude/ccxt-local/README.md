@@ -18,4 +18,4 @@ This registers a stdio MCP server named `ccxt` (run via `npx -y ccxt-mcp`; requi
 
 See the [MCP server docs](https://docs.ccxt.com/docs/mcp) for configuration, the capability tiers, and the safety model. The bundled `ccxt-mcp` skill (`skills/ccxt-mcp`) is a copy of `.claude/skills/ccxt-mcp` in ccxt/ccxt.
 
-The per-language CCXT coding skills (`ccxt-typescript`, `ccxt-python`, …) are distributed separately via `npx skills add ccxt/ccxt` — see the [AI Skills docs](https://docs.ccxt.com/#/ai-skills).
+The per-language CCXT coding skills (`ccxt-typescript`, `ccxt-python`, …) come with the `ccxt` plugin from this marketplace, or with `npx skills add ccxt/ccxt`: see the [AI Skills docs](https://docs.ccxt.com/#/ai-skills).
