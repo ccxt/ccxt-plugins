@@ -11,6 +11,16 @@ Setup for every assistant: [docs.ccxt.com/docs/mcp](https://docs.ccxt.com/docs/m
 
 The source of truth is the [ccxt/ccxt](https://github.com/ccxt/ccxt) repository (`mcp/hosted/plugin`, `mcp/plugin`, `.claude/skills/ccxt-mcp`). Report problems at [ccxt/ccxt issues](https://github.com/ccxt/ccxt/issues).
 
+## Claude
+
+| Where | How |
+|---|---|
+| Claude web, desktop and Cowork (paid plans) | **Customize > Plugins > Add > Add marketplace**, enter `ccxt/ccxt-plugins`, add **CCXT**, then connect it on the plugin's **Connectors** tab |
+| Claude Code | `claude plugin install ccxt --marketplace ccxt/ccxt-plugins` (hosted) or `claude plugin install ccxt-mcp --marketplace ccxt/ccxt-plugins` (local server) |
+| Team and Enterprise | an Owner adds the marketplace under **Organization settings > Plugins & skills > Add > Sync from GitHub** |
+
+Files: [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) and [`claude/`](claude/).
+
 ## License
 
 MIT, as CCXT.
